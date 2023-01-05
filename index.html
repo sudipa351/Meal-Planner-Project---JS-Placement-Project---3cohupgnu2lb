@@ -1,113 +1,104 @@
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Meal Planner</title>
-    <link rel="stylesheet" href="./styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <nav class="navbar" >
+      <div class="nav-logo" >
+        
+        <div class="logoimg"><img src="./logo.png"><span class="meal">MEAL PLANNER</span></a></div>
 
-   <nav class="navbar">
-    <div class="logoimg"><img src="./logo.png"><h2 class="meal">MEAL PLANNER</h2></a></div>
-   </nav>
+        
+      </div>
+    </nav>
 
-   <form>
-     <div class="row">
-       <input type="number" id="height" placeholder="height">
-       <input type="number" id="weight" placeholder="weight">
-       <input type="number" id="age" placeholder="age">
-       <input type="text" id="gender" placeholder="gender">
-       <!-- <input type="text" id="activity" placeholder="activity lavel" > -->
-       <select id="activity">
-        <option value="light">Light</option>
-        <option value="moderate">Moderate</option>
-        <option value="active">Active</option>
-       </select>
-       
-     </div>
-     <button id="submit" type="submit">Generate Meals</button>
-   </form>
-   
-   <div id="card-div">
+    <main id="main">
+      <form id="mealForm">
+        <div class="row">
+          <div class="input_div">
+            <input
+              type="number"
+              placeholder="Enter Height"
+              id="height"
+              autofocus
+            />
+          </div>
+          <div class="input_div">
+            <input
+              type="number"
+              placeholder="Enter Weight"
+              id="weight"
+            />
+          </div>
+          <div class="input_div">
+            <input
+              type="number"
+              placeholder="Enter Age"
+              id="age"
+              max="150"
+            />
+          </div>
+          <div class="input_div">
+            <select name="gender" id="gender">
+              <option selected>Gender</option>
+              <option value="men">Men</option>
+              <option value="women">Women</option>
+            </select>
+          </div>
+          <div class="input_div">
+            <select name="activity" id="activity">
+              <option selected>Activity Level</option>
+              <option value="light">Light</option>
+              <option value="moderate">Moderate</option>
+              <option value="active">Active</option>
+            </select>
+          </div>
+        </div>
 
-   </div>
-      
+        <button type="submit" id="submitBtn">Generate Meal</button>
+      </form>
 
+      <div class="ourMeal" id="meals"></div>
 
+      <div class="recipe_section" id="recipeSection">
+        <div class="tabs">
+          <button class="tabBtns" onclick="getIngradients()">Ingredients</button>
+          <button class="tabBtns" onclick="getSteps()">Steps</button>
+          <button class="tabBtns" onclick="getEquipments()">Equipements</button>
+        </div>
+        <div id="tabContent"></div>
+      </div>
+    </main>
 
+    <section id="newSection"></section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- <div class="container">
-        <div class="meal-wrapper">
-            <div class="meal-search">
-                 <h2 class="title">Meal Planner</h2> -->
-                <!-- <div class="meal-search-box">
-                    <input type="text" class="search-control" placeholder="Enter an ingredient" id="search-input">
-                    <button type="submit" class="search-btn btn" id="search-btn">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="meal-result">
-                <h2 class="title" >Your Search Results:</h2> 
-                    <div id="meal">
-                     
-                    </div>
-                
-            </div>
-            <div>
-                <button type="button" class="btn recipe-close-btn" id="recipe-close-btn">
-                    <i class="fas fa-times"></i>
-                </button>
-                <div class="meal-details-content">
-
-                </div>
-            </div>
-        </div> -->
-    <!-- </div>  -->
     <script src="./App.js"></script>
-</body>
+  </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
