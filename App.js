@@ -16,14 +16,19 @@ let equipements;
 const authId = "06bf2f293f84479282ccd1a03197e3b6";
 
 let getData = () => {
-  let url = `https://api.spoonacular.com/mealplanner/generate?apiKey=${authId}&timeFrame=day`;
+  let url = `https://api.spoonacular.com/mealplanner/generate?apiKey=${authId}&timeFrame=day&targetCalories=${calories}`;
   fetch(url)
     .then((res) => res.json())
     .then((responseData) => {
       console.log(responseData.meals);
       document.getElementById("meals").innerHTML = "";
       responseData.meals.forEach((data, index) => {
-        const htmlData = `
+        let url2 = `https://api.spoonacular.com/recipes/${data.id}/information?apiKey=${authId}`;
+        fetch(url2)
+          .then((res) => res.json())
+          .then((res) => {
+            let imgurl = res.image;
+            const htmlData = `
             <div class="car-col">
                 <div>
                     <h3>${
@@ -34,9 +39,7 @@ let getData = () => {
                         : "Dinner"
                     }</h3>
                     <div class="card mealCard">
-                        <img src="${
-                          data.sourceUrl
-                        }.jpg" alt="meal" class="cardimg">
+                        <img src="${imgurl}" alt="meal" class="cardimg">
                         <div class="card-content">
                             <p class="mealName">${data.title}</p>
                             <p class="calories">Calories: ${
@@ -50,8 +53,10 @@ let getData = () => {
                 </div>
             </div>
             `;
-        document.getElementById("meals").innerHTML += htmlData;
+            document.getElementById("meals").innerHTML += htmlData;
+          });
       });
+      getRecipe(responseData.meals[0].id);
     });
 };
 
