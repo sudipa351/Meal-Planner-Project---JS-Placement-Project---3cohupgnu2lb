@@ -13,7 +13,7 @@ let ingredients;
 let steps;
 let equipements;
 
-const authId = "06bf2f293f84479282ccd1a03197e3b6";
+const authId = "8d724cd1d2b844058f34606479cf1c96";
 
 let getData = () => {
   let url = `https://api.spoonacular.com/mealplanner/generate?apiKey=${authId}&timeFrame=day&targetCalories=${calories}`;
