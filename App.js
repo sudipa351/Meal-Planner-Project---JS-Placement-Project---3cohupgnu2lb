@@ -15,7 +15,10 @@ let equipements;
 
 const authId = "8d724cd1d2b844058f34606479cf1c96";
 
+const arr = ["Breakfast ", "Lunch", "Dinner"];
+
 let getData = () => {
+  let i = 0;
   let url = `https://api.spoonacular.com/mealplanner/generate?apiKey=${authId}&timeFrame=day&targetCalories=${calories}`;
   fetch(url)
     .then((res) => res.json())
@@ -31,29 +34,20 @@ let getData = () => {
             const htmlData = `
             <div class="car-col">
                 <div>
-                    <h3>${
-                      data.readyInMinutes < 20
-                        ? "Brakfast"
-                        : index === 1
-                        ? "Lunch"
-                        : "Dinner"
-                    }</h3>
+                   <h3>${arr[i]}</h3>
                     <div class="card mealCard">
                         <img src="${imgurl}" alt="meal" class="cardimg">
                         <div class="card-content">
                             <p class="mealName">${data.title}</p>
-                            <p class="calories">Calories: ${
-                              responseData.nutrients.calories
-                            }</p>
-                            <button class="reciepbtn" onclick="getRecipe(${
-                              data.id
-                            })">Get Recipe</button>
+                            <p class="calories">Calories: ${responseData.nutrients.calories}</p>
+                            <button class="reciepbtn" onclick="getRecipe(${data.id})">Get Recipe</button>
                         </div>
                     </div>
                 </div>
             </div>
             `;
             document.getElementById("meals").innerHTML += htmlData;
+            i++;
           });
       });
       getRecipe(responseData.meals[0].id);
@@ -116,6 +110,7 @@ function getEquipments() {
     const inGradientData = `
             <div class="ingradientItem">
                 <p class="itemname">${e.name}</p>
+                <span>${e.length}</span>
             </div>
         `;
     document.getElementById("tabContent").innerHTML += inGradientData;
